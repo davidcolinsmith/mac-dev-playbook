@@ -42,6 +42,7 @@ homebrew_installed_packages:
   - aws-okta
   - aws-cli
   - docker-machine
+  - dockerfile-lint
   - eksctl
   - flake8
   - fluxctl
@@ -52,11 +53,14 @@ homebrew_installed_packages:
   - gpg
   - httpie
   - iperf
+  - jsonlint
+  - markdownlint-cli
   - nmap
   - ssh-copy-id
   - cowsay
   - readline
   - openssl
+  - the_silver_searcher
   - wget
   - zsh-history-substring-search
 
