@@ -1,7 +1,11 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: true
+general:
+  local_home: "{{ lookup('env','HOME')}}"
+  user_name: "{{ lookup('env','USER')}}"
+
+
 configure_terminal: true
 configure_osx: true
 
@@ -12,10 +16,28 @@ dockitems_remove:
   - TV
   - Podcasts
   - 'App Store'
-dockitems_persist: []
+  - News
+  - Music
+  - Safari
+  - Mail
+  - Maps
+  - Contacts
+dockitems_persist:
 # - name: "Sublime Text"
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
+ - name: "iTerm"
+   path: "/Applications/iTerm.app/"
+   pos: 1
+ - name: "Google Chrome"
+   path: "/Applications/Google Chrome.app/"
+   pos: 2
+ - name: "KeePassXC"
+   path: "/Applications/KeePassXC.app/"
+   pos: 3
+ - name: "Spotify"
+   path: "/Applications/Spotify.app/"
+   pos: 4
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -24,15 +46,18 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
+configure_dotfiles: true
 dotfiles_repo: https://github.com/davidcolinsmith/dotfiles.git
+dotfiles_repo_branch: master
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/github/dotfiles
+dotfiles_repo_local_destination: ~/dotfiles
 dotfiles_files:
-  - .zshrc
-  - .gitignore
-  - .inputrc
-  - .osx
-  - .vimrc
+  - zshrc
+  - gitignore
+  - inputrc
+  - osx
+  - vimrc
+  - p10k.zsh
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
@@ -40,7 +65,7 @@ homebrew_installed_packages:
   - automake
   - aws-iam-authenticator
   - aws-okta
-  - aws-cli
+  - awscli
   - docker-machine
   - dockerfile-lint
   - eksctl
@@ -51,29 +76,54 @@ homebrew_installed_packages:
   - github/gh/gh
   - go
   - gpg
+  - helm
   - httpie
   - iperf
   - jsonlint
   - markdownlint-cli
+  - jq
+  - mtr
   - nmap
   - ssh-copy-id
   - cowsay
   - readline
   - openssl
   - the_silver_searcher
+    # - terraform
+  - terraform-docs
+    #  - terragrunt
+  - tfenv
+  - tflint
+  - tgenv
+  - tmux
+  - tree
+  - vim
+  - watch
   - wget
+  - yq
+  - zsh
   - zsh-history-substring-search
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-fonts
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - bitwig-studio
   - chromedriver
   - dropbox
   - google-chrome
+  - iterm2
+  - keepassxc
+  - keybase
+  - remarkable
   - slack
+  - spotify
+  - spotify-now-playing
+  - zenmap
+  - font-hack-nerd-font
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
@@ -101,24 +151,6 @@ pip_packages: []
 # - name: mkdocs
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
-
-# Set to 'true' to configure Sublime Text.
-configure_sublime: false
-sublime_base_path: '~/Library/Application Support/Sublime Text'
-sublime_config_path: "Packages/User"
-sublime_package_control:
-  - "DocBlockr"
-  - "Dockerfile Syntax Highlighting"
-  - "FileDiffs"
-  - "GitHub Flavored Markdown Preview"
-  - "Jinja2"
-  - "Package Control"
-  - "PHP-Twig"
-  - "Pretty JSON"
-  - "SublimeLinter"
-  - "SublimeLinter-contrib-yamllint"
-  - "TrailingSpaces"
-  - "WordCount"
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

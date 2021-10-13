@@ -1,3 +1,13 @@
 ---
 - name: Install oh-my-zsh
-  ansible.builtin.command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" ""
+  args:
+    creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+
+- name: Install powerlevel10k
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git 
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+    accept_hostkey: yes
+    force: yes
+  become: false
