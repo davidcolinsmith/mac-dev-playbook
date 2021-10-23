@@ -122,6 +122,7 @@ homebrew_cask_apps:
   - slack
   - spotify
   - spotify-now-playing
+  - steam
   - zenmap
   - font-hack-nerd-font
 
