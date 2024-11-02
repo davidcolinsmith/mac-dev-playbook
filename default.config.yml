@@ -6,6 +6,7 @@ general:
   user_name: "{{ lookup('env','USER')}}"
 
 
+configure_dotfiles: true
 configure_terminal: true
 configure_osx: true
 
@@ -73,16 +74,21 @@ homebrew_installed_packages:
   - fluxctl
   - gifsicle
   - git
-  - github/gh/gh
+  - gh
   - go
   - gpg
   - helm
   - httpie
   - iperf
+<<<<<<< HEAD
   - jsonlint
   - markdownlint-cli
   - jq
   - mtr
+=======
+  - libevent
+  - sqlite
+>>>>>>> upstream/master
   - nmap
   - ssh-copy-id
   - cowsay
@@ -104,10 +110,14 @@ homebrew_installed_packages:
   - zsh
   - zsh-history-substring-search
 
+<<<<<<< HEAD
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
   - homebrew/cask-fonts
+=======
+homebrew_taps: []
+>>>>>>> upstream/master
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
